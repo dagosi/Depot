@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-  # GET /products
-  # GET /products.json
+  # GET /productsn  # GET /products.json
   def index
     @products = Product.all
 
