@@ -1,0 +1,8 @@
+class CreateTypePayments < ActiveRecord::Migration
+  def change
+    create_table :type_payments do |t|
+
+      t.timestamps
+    end
+  end
+end

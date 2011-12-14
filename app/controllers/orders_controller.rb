@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
+  
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
-
+    @orders = Order.paginate :page => params[:page], :order => 'created_at desc', :per_page => 10
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }
@@ -14,7 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-
+    @payments = TypePayment.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @order }
@@ -30,6 +31,7 @@ class OrdersController < ApplicationController
     end
 
     @order = Order.new
+    @payments = @order.get_payments
     
     respond_to do |format|
       format.html # new.html.erb
@@ -47,7 +49,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(current_cart)
-    
+        
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
