@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  @holaC = "Hola carts"
   # GET /carts
   # GET /carts.json
   def index

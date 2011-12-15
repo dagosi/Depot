@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  @holaL = "Hola line items"
   # GET /line_items
   # GET /line_items.json
   def index
