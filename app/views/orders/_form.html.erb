@@ -6,29 +6,29 @@
 
       <ul>
       <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li><%= raw msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :name, 'Name:' %><br />
+    <%= f.label :name, t('.name') + ":" %><br />
     <%= f.text_field :name, :size => 40 %>
   </div>
   <div class="field">
-    <%= f.label :address, 'Address:' %><br />
+    <%= f.label :address, t('.address').html_safe + ':' %><br />
     <%= f.text_area :address, rows: 3, cols: 40 %>
   </div>
   <div class="field">
-    <%= f.label :email, 'E-mail:' %><br />
+    <%= f.label :email, t('.email') + ':' %><br />
     <%= f.text_field :email, size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :pay_type, 'Pay with:' %><br />
-    <%= f.select :pay_type, @payments, prompt: 'Select a payment type' %>
+    <%= f.label :pay_type, t('.pay_type') + ':' %><br />
+    <%= f.select :pay_type, @payments, prompt: t('.pay_prompt').html_safe %>
   </div>
   <div class="actions">
-    <%= f.submit "Place Order" %>
+    <%= f.submit t('.submit') %>
   </div>
 <% end %>
