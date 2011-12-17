@@ -1,11 +1,5 @@
 Depot::Application.routes.draw do
-<<<<<<< HEAD
-  resources :users
-
-  resources :orders
-=======
   get 'admin' => "admin#index"
->>>>>>> 024e557a32f703edd5a3dec7080c985ac3dc6b99
 
   controller :sessions do
     get 'login' => :new
