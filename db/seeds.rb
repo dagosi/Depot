@@ -29,3 +29,13 @@ Product.create(
                :description => 'This is a rails book.',
                :image_url => 'rails.png',
                :price => 100.00)
+
+TypePayment.delete_all
+# Seed for create the pay types.
+TypePayment.create(:name => 'Check')
+TypePayment.create(:name => 'Credit Card')
+TypePayment.create(:name => 'Pay Pal')
+
+User.delete_all
+# Create de admin user
+User.create(name: "admin", hashed_password: "admin", salt: "admin")
