@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+class User < ActiveRecord::Base
+  validates :name, :presence => true, :uniqueness => true
+  validates :password, :confirmation => true
+  attr_accessor :password_confirmation
+  attr_reader :password
+  validate :password_must_be_present
+  
+  private
+  
+  def password_must_be_present
+    errors.add(:password, "Missing password" ) unless hashed_password.present?
+  end
+=======
 require 'digest/sha2'
 class User < ActiveRecord::Base
   
@@ -38,4 +52,5 @@ class User < ActiveRecord::Base
   def generate_salt
     self.salt = self.object_id.to_s + rand.to_s
   end
+>>>>>>> 024e557a32f703edd5a3dec7080c985ac3dc6b99
 end
